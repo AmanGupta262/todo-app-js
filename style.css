@@ -101,4 +101,47 @@ html {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+
+.todo-actions,
+.filter-todos {
+  padding: 0.5rem;
+  color: gray;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.todo-list {
+  padding: 1rem;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.todo-list .todo {
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: .5rem;
+}
+
+.todo-list .todo .task {
+  margin-left: 1rem;
+}
+
+.todo-list .todo .delete {
+  opacity: 0;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.todo-list .todo:hover .delete,
+.todo-list .todo:focus .delete {
+  opacity: 1;
+}
 /*# sourceMappingURL=style.css.map */
