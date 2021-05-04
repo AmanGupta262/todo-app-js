@@ -31,6 +31,7 @@ html {
 
 .container {
   min-height: 100vh;
+  padding: 2rem;
   background-color: #d2d6dd;
 }
 
@@ -120,6 +121,14 @@ html {
       -ms-flex-flow: column;
           flex-flow: column;
   width: 100%;
+}
+
+.todo-list .completed {
+  opacity: .5;
+}
+
+.todo-list .completed .task {
+  text-decoration: line-through;
 }
 
 .todo-list .todo {

@@ -21,6 +21,7 @@ html {
 }
 .container {
   min-height: 100vh;
+  padding: 2rem;
   background-color: #d2d6dd;
 }
 
@@ -97,6 +98,14 @@ html {
   padding: 1rem;
   flex-flow: column;
   width: 100%;
+
+  .completed{
+    opacity: .5;
+
+    .task{
+      text-decoration: line-through;
+    }
+  }
 
   .todo {
     width: 100%;
