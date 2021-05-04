@@ -21,9 +21,11 @@ showBtns.forEach(show => {
 // Functions
 function addTodo(e){
     e.preventDefault();
-    const value = input.value;
-    if(!value)
+    const value = input.value.trim();
+    if(!value){
+        input.value = '';
         return;
+    }
     const newTodo = document.createElement('div');
     
     newTodo.classList.add('todo', 'd-flex');
@@ -56,6 +58,12 @@ function completeAllTodo(e){
 
 function showTodos(e){
     const self = e.target;
+    showBtns.forEach(show => {
+        if(show == self)
+            show.classList.add('active');
+        else
+            show.classList.remove('active');
+    });
     const type = self.getAttribute('data-show');
     const todos = document.querySelectorAll('.todo');
     
