@@ -57,4 +57,48 @@ html {
 .b-bt {
   border-bottom: 1px solid #ded8d8;
 }
+
+.form {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: #ebebeb;
+  border-radius: 10px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.form:hover .btn,
+.form:focus .btn {
+  opacity: 1;
+  background-color: #000000c9;
+  color: #fff;
+}
+
+.form input {
+  outline: none;
+  background-color: inherit;
+  border: none;
+  font-size: 1.3rem;
+  width: 28rem;
+  padding-left: 2rem;
+}
+
+.form .todo-icon {
+  font-size: 1.6rem;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.form .btn {
+  font-size: 1.3rem;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
 /*# sourceMappingURL=style.css.map */
