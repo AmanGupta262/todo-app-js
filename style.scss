@@ -98,11 +98,12 @@ html {
   padding: 1rem;
   flex-flow: column;
   width: 100%;
+  transition: all 0.5s ease;
 
-  .completed{
-    opacity: .5;
+  .completed {
+    opacity: 0.5;
 
-    .task{
+    .task {
       text-decoration: line-through;
     }
   }
@@ -111,6 +112,7 @@ html {
     width: 100%;
     justify-content: space-between;
     padding: 0.5rem;
+    transition: all 0.5s ease;
 
     .task {
       margin-left: 1rem;
@@ -131,12 +133,12 @@ html {
   #total {
     color: #000;
   }
-  .filter-actions{
-    .btn{
-        margin-left: 0.5rem;
+  .filter-actions {
+    .btn {
+      margin-left: 0.5rem;
     }
-    .active{
-        color: #000;
+    .active {
+      color: #000;
     }
   }
 }

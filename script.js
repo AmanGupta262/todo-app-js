@@ -46,6 +46,11 @@ function addTodo(e){
     input.value = '';
     getAllTodos();
 
+    const completeBtn = newTodo.querySelector('.complete');
+    const deleteBtn = newTodo.querySelector('.delete');
+    
+    completeBtn.addEventListener('click', completeTodo);
+
     
 }
 
@@ -90,6 +95,18 @@ function showTodos(e){
             });
             break;
     }
+}
+
+function completeTodo(e){
+    const self = e.target;
+    const todo = self.parentElement.parentElement;
+
+    if (self.innerText == 'radio_button_unchecked')
+        self.innerText = 'radio_button_checked';
+    else
+        self.innerText = 'radio_button_unchecked';
+
+    todo.classList.toggle('completed');
 }
 
 function getAllTodos(){
