@@ -13,6 +13,9 @@ const showBtns = document.querySelectorAll('.show');
 // event listeners
 submitBtn.addEventListener('click', addTodo);
 completeAll.addEventListener('click', completeAllTodo);
+showBtns.forEach(show => {
+    show.addEventListener('click', showTodos);
+});
 
 
 // Functions
@@ -51,7 +54,35 @@ function completeAllTodo(e){
     });
 }
 
-
+function showTodos(e){
+    const self = e.target;
+    const type = self.getAttribute('data-show');
+    const todos = document.querySelectorAll('.todo');
+    
+    switch(type){
+        case 'all':
+            todos.forEach(todo => {
+                todo.style.display = 'flex';
+            });
+            break;
+        case 'uncompleted':
+            todos.forEach(todo => {
+                if(todo.classList.contains('completed'))
+                    todo.style.display = 'none';
+                else
+                    todo.style.display = 'flex';
+            });
+            break;
+        case 'completed':
+            todos.forEach(todo => {
+                if (!todo.classList.contains('completed'))
+                    todo.style.display = 'none';
+                else
+                    todo.style.display = 'flex';
+            });
+            break;
+    }
+}
 
 function getAllTodos(){
     const todos = document.querySelectorAll('.todo');
