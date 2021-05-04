@@ -12,7 +12,7 @@ const showBtns = document.querySelectorAll('.show');
 
 // event listeners
 submitBtn.addEventListener('click', addTodo);
-
+completeAll.addEventListener('click', completeAllTodo);
 
 
 // Functions
@@ -44,6 +44,12 @@ function addTodo(e){
     
 }
 
+function completeAllTodo(e){
+    const todos = document.querySelectorAll('.todo');
+    todos.forEach(todo => {
+        todo.classList.add('completed');
+    });
+}
 
 
 
