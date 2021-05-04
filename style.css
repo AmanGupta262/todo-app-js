@@ -1,0 +1,60 @@
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-family: "Poppins", sans-serif;
+}
+
+.d-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.material-icons-outlined {
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+}
+
+.container {
+  min-height: 100vh;
+  background-color: #d2d6dd;
+}
+
+.todo-container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #fff;
+  min-width: 30rem;
+  -webkit-box-shadow: 0 0 0 8px #c7c7cc;
+          box-shadow: 0 0 0 8px #c7c7cc;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.btn {
+  outline: none;
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.b-bt {
+  border-bottom: 1px solid #ded8d8;
+}
+/*# sourceMappingURL=style.css.map */
