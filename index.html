@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+
+    <!-- Material Icons css link -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round"
+        rel="stylesheet" />
+
+    <!-- Google poppins font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container d-flex">
+        <div class="todo-container d-flex">
+            <div class="form">
+                <form class="add-todo-form">
+                    <span class="material-icons-outlined todo-icon">
+                        description
+                    </span>
+                    <input type="text" placeholder="Type your todo list" id="todo-content">
+                    <button type="submit" class="btn">
+                        Add
+                    </button>
+                </form>
+            </div>
+            <div class="todo-actions d-flex b-bt ">
+                <div class="btn complete-all">
+                    <span class="material-icons-outlined">
+                        done_all
+                    </span>
+                    Complete all tasks
+                </div>
+                <div class="btn clear-completed">Clear completed</div>
+            </div>
+            <div class="todo-list d-flex">
+                <div class="todo d-flex">
+                    <div class="left d-flex">
+                        <div class="btn complete">
+                            <span class="material-icons-outlined">
+                                radio_button_unchecked
+                            </span>
+                        </div>
+
+                        <div class="task"> task 1</div>
+                    </div>
+
+                    <div class="btn delete">
+                        <span class="material-icons-outlined">
+                            highlight_off
+                        </span>
+                    </div>
+
+                </div>
+                <div class="todo d-flex">
+                    <div class="left d-flex">
+                        <div class="btn complete">
+                            <span class="material-icons-outlined">
+                                radio_button_unchecked
+                            </span>
+                        </div>
+
+                        <div class="task"> task 1</div>
+                    </div>
+
+                    <div class="btn delete">
+                        <span class="material-icons-outlined">
+                            highlight_off
+                        </span>
+                    </div>
+
+                </div>
+                <div class="todo d-flex">
+                    <div class="left d-flex">
+                        <div class="btn complete">
+                            <span class="material-icons-outlined">
+                                radio_button_unchecked
+                            </span>
+                        </div>
+
+                        <div class="task"> task 1</div>
+                    </div>
+
+                    <div class="btn delete">
+                        <span class="material-icons-outlined">
+                            highlight_off
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="filter-todos d-flex">
+                <div class="total-tasks">
+                    <span id="total">3</span> tasks
+                </div>
+                <div class="filter-actions d-flex">
+                    <div class="btn">All</div>
+                    <div class="btn">Uncompleted</div>
+                    <div class="btn">Completed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
