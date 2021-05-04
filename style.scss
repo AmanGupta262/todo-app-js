@@ -95,25 +95,39 @@ html {
 
 .todo-list {
   padding: 1rem;
-  flex-direction: column;
+  flex-flow: column;
   width: 100%;
 
   .todo {
     width: 100%;
     justify-content: space-between;
-    padding: .5rem;
+    padding: 0.5rem;
 
-    .task{
-        margin-left: 1rem;
+    .task {
+      margin-left: 1rem;
     }
 
-    .delete{
-        opacity: 0;
-        transition: all .5s ease;
+    .delete {
+      opacity: 0;
+      transition: all 0.5s ease;
     }
     &:hover .delete,
-    &:focus .delete{
-        opacity: 1;
+    &:focus .delete {
+      opacity: 1;
+    }
+  }
+}
+
+.filter-todos {
+  #total {
+    color: #000;
+  }
+  .filter-actions{
+    .btn{
+        margin-left: 0.5rem;
+    }
+    .active{
+        color: #000;
     }
   }
 }

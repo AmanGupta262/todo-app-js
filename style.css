@@ -117,8 +117,8 @@ html {
   padding: 1rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+      -ms-flex-flow: column;
+          flex-flow: column;
   width: 100%;
 }
 
@@ -127,7 +127,7 @@ html {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .todo-list .todo .task {
@@ -136,12 +136,24 @@ html {
 
 .todo-list .todo .delete {
   opacity: 0;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .todo-list .todo:hover .delete,
 .todo-list .todo:focus .delete {
   opacity: 1;
+}
+
+.filter-todos #total {
+  color: #000;
+}
+
+.filter-todos .filter-actions .btn {
+  margin-left: 0.5rem;
+}
+
+.filter-todos .filter-actions .active {
+  color: #000;
 }
 /*# sourceMappingURL=style.css.map */
