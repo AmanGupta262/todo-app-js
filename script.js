@@ -16,6 +16,7 @@ completeAll.addEventListener('click', completeAllTodo);
 showBtns.forEach(show => {
     show.addEventListener('click', showTodos);
 });
+clearCompleted.addEventListener('click', deleteCompletedTodos);
 
 
 // Functions
@@ -48,14 +49,15 @@ function addTodo(e){
 
     const completeBtn = newTodo.querySelector('.complete');
     const deleteBtn = newTodo.querySelector('.delete');
+    const task = newTodo.querySelector('.task');
     
     completeBtn.addEventListener('click', completeTodo);
-
+    deleteBtn.addEventListener('click', deleteTodo, false);
     
 }
 
 function completeAllTodo(e){
-    const todos = document.querySelectorAll('.todo');
+    const todos = getAllTodos();
     todos.forEach(todo => {
         todo.classList.add('completed');
     });
@@ -70,7 +72,7 @@ function showTodos(e){
             show.classList.remove('active');
     });
     const type = self.getAttribute('data-show');
-    const todos = document.querySelectorAll('.todo');
+    const todos = getAllTodos();
     
     switch(type){
         case 'all':
@@ -109,7 +111,21 @@ function completeTodo(e){
     todo.classList.toggle('completed');
 }
 
+function deleteTodo(e){
+    const todo = e.target.parentElement;
+    todo.remove();
+    getAllTodos();
+}
+function deleteCompletedTodos(e){
+    const todos = getAllTodos();
+    todos.forEach(todo => {
+        if (todo.classList.contains('completed'))
+            todo.remove();
+    });
+    getAllTodos();
+}
 function getAllTodos(){
     const todos = document.querySelectorAll('.todo');
     totalTodos.innerHTML = todos.length;
+    return todos;
 }
