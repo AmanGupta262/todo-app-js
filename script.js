@@ -46,10 +46,12 @@ function addTodo(e){
     todoList.prepend(newTodo);
     input.value = '';
     getAllTodos();
+    
 
     const completeBtn = newTodo.querySelector('.complete');
     const deleteBtn = newTodo.querySelector('.delete');
-    const task = newTodo.querySelector('.task');
+    const task = newTodo.querySelector('.task').innerText;
+    saveTodos(task);
     
     completeBtn.addEventListener('click', completeTodo);
     deleteBtn.addEventListener('click', deleteTodo, false);
@@ -128,4 +130,22 @@ function getAllTodos(){
     const todos = document.querySelectorAll('.todo');
     totalTodos.innerHTML = todos.length;
     return todos;
+}
+
+function checkTodos(){
+    let todos = localStorage.getItem('todos');
+    if(!todos)
+        todos = [];
+    else
+        todos = JSON.parse(todos);
+    
+    return todos;
+}
+
+function saveTodos(todo){
+    const todos = checkTodos();
+
+    todos.push(todo);
+    localStorage.setItem('todos', JSON.stringify(todos));
+
 }
