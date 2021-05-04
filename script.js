@@ -17,12 +17,19 @@ showBtns.forEach(show => {
     show.addEventListener('click', showTodos);
 });
 clearCompleted.addEventListener('click', deleteCompletedTodos);
-
+document.addEventListener("DOMContentLoaded", fetchTodos);
 
 // Functions
-function addTodo(e){
-    e.preventDefault();
-    const value = input.value.trim();
+function addTodo(e, todo){
+    if(e)
+        e.preventDefault();
+    let value;
+    if(todo){
+        value = todo;
+    }
+    else{
+        value = input.value.trim();
+    }
     if(!value){
         input.value = '';
         return;
@@ -51,7 +58,8 @@ function addTodo(e){
     const completeBtn = newTodo.querySelector('.complete');
     const deleteBtn = newTodo.querySelector('.delete');
     const task = newTodo.querySelector('.task').innerText;
-    saveTodos(task);
+    if(!todo)
+        saveTodos(task);
     
     completeBtn.addEventListener('click', completeTodo);
     deleteBtn.addEventListener('click', deleteTodo, false);
@@ -115,14 +123,18 @@ function completeTodo(e){
 
 function deleteTodo(e){
     const todo = e.target.parentElement;
+    deleteTodoFromLocal(todo);
+
     todo.remove();
     getAllTodos();
 }
 function deleteCompletedTodos(e){
     const todos = getAllTodos();
     todos.forEach(todo => {
-        if (todo.classList.contains('completed'))
+        if (todo.classList.contains('completed')){
+            deleteTodoFromLocal(todo);
             todo.remove();
+        }   
     });
     getAllTodos();
 }
@@ -147,5 +159,19 @@ function saveTodos(todo){
 
     todos.push(todo);
     localStorage.setItem('todos', JSON.stringify(todos));
+}
 
+function fetchTodos(){
+    const todos = checkTodos();
+    todos.forEach(todo => {
+        addTodo(undefined, todo);
+    });
+}
+function deleteTodoFromLocal(todo){
+    const task = todo.querySelector('.task').innerText;
+    console.log(todo);
+    const todos = checkTodos();
+    const index = todos.indexOf(task);
+    todos.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
 }
