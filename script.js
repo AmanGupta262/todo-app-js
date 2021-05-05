@@ -1,49 +1,95 @@
-// selectors
+// SELECTORS
+
+// input field
 const input = document.querySelector('#todo-content');
+
+// add button
 const submitBtn = document.querySelector('#add-todo');
+
+// complete all todo button
 const completeAll = document.querySelector('.complete-all');
+
+// clear completed todo button
 const clearCompleted = document.querySelector('.clear-completed');
+
+// Todo container
 const todoList = document.querySelector('.todo-list');
+
+// total number of todos
 const totalTodos = document.querySelector('#total');
+
+// filter todo buttons all, uncompleted, completed
 const showBtns = document.querySelectorAll('.show');
 
+// EVENT LISTNERS
 
-
-
-// event listeners
+// Add todo
 submitBtn.addEventListener('click', addTodo);
+
+// Mark all todos completed
 completeAll.addEventListener('click', completeAllTodo);
+
+// Filter todos
 showBtns.forEach(show => {
     show.addEventListener('click', showTodos);
 });
+
+// Delete completed todos
 clearCompleted.addEventListener('click', deleteCompletedTodos);
+
+// Fetch todos from local Storage when document is loaded
 document.addEventListener("DOMContentLoaded", fetchTodos);
 
-// Functions
-function addTodo(e, todo, status){
-    if(e)
+// FUNCTIONS
+
+// Add new todo 
+// todo and status are undefined for adding todos using form
+// Reused this function for creating todos using fetched todos from locala storage 
+// passing todo content and status completed or not
+function addTodo(e, todo, status) {
+    if (e)
+        // prevent page form refreshing
         e.preventDefault();
     let value;
-    if(todo){
+
+    if (todo) {
+        // for fteched todo from localStorage
         value = todo;
     }
-    else{
+    else {
+        // for creating todo using form
         value = input.value.trim();
     }
-    if(!value){
+
+    // if input contains only spaces then do nothing
+    if (!value) {
         input.value = '';
         return;
     }
+
+    // Else create new div element
     const newTodo = document.createElement('div');
+
+    // this radio is for fetched todos from localStorage 
+    // it is value of checked or unchecked radio icon value for material icons
     let radio = '';
-    if(status){
+
+    // if staus is true 
+    if (status) {
+        // mark todo as completed 
         radio = 'radio_button_checked';
+        // adding class completed to mark todo as comleted
         newTodo.classList.add('todo', 'd-flex', 'completed');
     }
-    else{
+    else {
+        // else mark todo as uncompleted
         radio = 'radio_button_unchecked';
         newTodo.classList.add('todo', 'd-flex');
     }
+
+    // add complete, todo content and delete button to new todo
+    // value is todo content 
+    // radio is icon value for checked and unchecked
     newTodo.innerHTML = `
             <div class="left d-flex">
                 <span class="material-icons-outlined btn complete">
@@ -57,112 +103,175 @@ function addTodo(e, todo, status){
                 highlight_off
             </span>
         `
+    // prepending new todo to todo container
     todoList.prepend(newTodo);
-    input.value = '';
-    getAllTodos();
-    
 
+    // clearing input value
+    input.value = '';
+
+    // showing count of all todos
+    getAllTodos();
+
+    // complete button of new todo
     const completeBtn = newTodo.querySelector('.complete');
+
+    // delete button of new todo 
     const deleteBtn = newTodo.querySelector('.delete');
-    
-    if(!todo)
+
+    // if user is creating todo the we save it to localStorage
+    // else if we fetching for localStorage we will not save it
+    if (!todo)
         saveTodos(newTodo);
-    
+
+    // add event listener for completing new todo
     completeBtn.addEventListener('click', completeTodo);
+
+    // add event listener for deleting new todo
     deleteBtn.addEventListener('click', deleteTodo, false);
-    
+
 }
 
-function completeAllTodo(e){
+// Function for completing all todos
+function completeAllTodo(e) {
+    // getting all todos
     const todos = getAllTodos();
+
+    // marking each as completed
     todos.forEach(todo => {
         todo.classList.add('completed');
+        todo.querySelector('.complete').innerText = 'radio_button_checked';
         changeTodoStatus(todo);
     });
 }
 
-function showTodos(e){
+// Fuction for filterling todo
+function showTodos(e) {
+
+    // getting pressed action and adding active class to it
     const self = e.target;
     showBtns.forEach(show => {
-        if(show == self)
+        if (show == self)
             show.classList.add('active');
         else
             show.classList.remove('active');
     });
+
+    // getting type of action
     const type = self.getAttribute('data-show');
+
+    // getting all todos
     const todos = getAllTodos();
-    
-    switch(type){
+
+    // for counting no. of todos
+    let count = 0;
+    switch (type) {
+        // showing all
         case 'all':
             todos.forEach(todo => {
                 todo.style.display = 'flex';
+                count += 1;
             });
             break;
+        // showing uncompleted
         case 'uncompleted':
             todos.forEach(todo => {
-                if(todo.classList.contains('completed'))
+                if (todo.classList.contains('completed')) {
                     todo.style.display = 'none';
-                else
+                } else {
                     todo.style.display = 'flex';
+                    count += 1;
+                }
             });
             break;
+        // showing completed
         case 'completed':
             todos.forEach(todo => {
-                if (!todo.classList.contains('completed'))
+                if (!todo.classList.contains('completed')) {
                     todo.style.display = 'none';
-                else
+                } else {
                     todo.style.display = 'flex';
+                    count += 1;
+                }
             });
             break;
     }
+
+    // showing totoal no. of todos in each category
+    totalTodos.innerHTML = count;
 }
 
-function completeTodo(e){
+// Function to complete a single todo
+function completeTodo(e) {
+    // radio button
     const self = e.target;
+
+    // getting clicked todo
     const todo = self.parentElement.parentElement;
 
+    // toggle radio icon
     if (self.innerText == 'radio_button_unchecked')
         self.innerText = 'radio_button_checked';
     else
         self.innerText = 'radio_button_unchecked';
 
+    // marking todo completed
     todo.classList.toggle('completed');
+
+    // saving status of todo in localStorage
     changeTodoStatus(todo);
 }
 
-function deleteTodo(e){
+// Function to delete a todo
+function deleteTodo(e) {
+    // getting todo
     const todo = e.target.parentElement;
+
+    // deleting form localStorage
     deleteTodoFromLocal(todo);
 
+    // removing todo from page
     todo.remove();
+
+    // Updating count
     getAllTodos();
 }
-function deleteCompletedTodos(e){
+
+// Function to delete all completed todos
+function deleteCompletedTodos(e) {
+    // getting all todos
     const todos = getAllTodos();
+
+    // deleting each completed todo from page and localStorage
     todos.forEach(todo => {
-        if (todo.classList.contains('completed')){
+        if (todo.classList.contains('completed')) {
             deleteTodoFromLocal(todo);
             todo.remove();
-        }   
+        }
     });
+
+    // Updating the count
     getAllTodos();
 }
-function getAllTodos(){
+
+// Function to update count of todos and return all todos
+function getAllTodos() {
     const todos = document.querySelectorAll('.todo');
     totalTodos.innerHTML = todos.length;
     return todos;
 }
 
-
-function checkTodos(){
+// Function to check saved todos in localStorage
+function checkTodos() {
     let todos = localStorage.getItem('todos');
-    if(!todos)
+    if (!todos)
         todos = [];
     else
         todos = JSON.parse(todos);
-    
+
     return todos;
 }
+
+// Function to check saved todo status in localStorage
 function checkTodoStatus() {
     let completed = localStorage.getItem('completed');
     if (!completed)
@@ -173,7 +282,8 @@ function checkTodoStatus() {
     return completed;
 }
 
-function saveTodos(todo){
+// Function to save todos in localstorage
+function saveTodos(todo) {
     const task = todo.querySelector('.task').innerText;
     const todos = checkTodos();
 
@@ -182,6 +292,7 @@ function saveTodos(todo){
     saveTodoStatus(todo);
 }
 
+// Function to save todos status in localstorage
 function saveTodoStatus(todo) {
     const completed = todo.classList.contains('completed');
     const status = checkTodoStatus();
@@ -191,7 +302,8 @@ function saveTodoStatus(todo) {
 
 }
 
-function changeTodoStatus(todo){
+// Function to change todo status in localStorage
+function changeTodoStatus(todo) {
     const todos = checkTodos();
     const status = checkTodoStatus();
     const task = todo.querySelector('.task').innerText;
@@ -201,15 +313,18 @@ function changeTodoStatus(todo){
     localStorage.setItem('completed', JSON.stringify(status));
 }
 
-function fetchTodos(){
+// Function to fetch todos form localStorage
+function fetchTodos() {
     const todos = checkTodos();
     const status = checkTodoStatus();
 
-    for(let i=0; i<todos.length; i++){
+    for (let i = 0; i < todos.length; i++) {
         addTodo(undefined, todos[i], status[i]);
     }
 }
-function deleteTodoFromLocal(todo){
+
+// Funtion to delete todos form localStorage
+function deleteTodoFromLocal(todo) {
     const task = todo.querySelector('.task').innerText;
     const todos = checkTodos();
     const index = todos.indexOf(task);
@@ -218,6 +333,7 @@ function deleteTodoFromLocal(todo){
     deleteTodoStatus(index);
 }
 
+// Function to delete todo status form localStorage
 function deleteTodoStatus(index) {
     const status = checkTodoStatus();
     status.splice(index, 1);
