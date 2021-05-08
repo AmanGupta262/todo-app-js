@@ -201,7 +201,7 @@ html {
 
 /* delete buttton of a todo */
 .todo-list .todo .delete {
-  opacity: 0;all
+  opacity: 0;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
