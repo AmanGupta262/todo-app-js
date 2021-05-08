@@ -21,6 +21,8 @@ const totalTodos = document.querySelector('#total');
 // filter todo buttons all, uncompleted, completed
 const showBtns = document.querySelectorAll('.show');
 
+
+
 // EVENT LISTNERS
 
 // Add todo
@@ -39,6 +41,8 @@ clearCompleted.addEventListener('click', deleteCompletedTodos);
 
 // Fetch todos from local Storage when document is loaded
 document.addEventListener("DOMContentLoaded", fetchTodos);
+
+
 
 // FUNCTIONS
 
@@ -72,6 +76,8 @@ function addTodo(e, todo, status) {
 
     // this radio is for fetched todos from localStorage 
     // it is value of checked or unchecked radio icon value for material icons
+    newTodo.classList.add('op-0');
+
     let radio = '';
 
     // if staus is true 
@@ -79,13 +85,17 @@ function addTodo(e, todo, status) {
         // mark todo as completed 
         radio = 'radio_button_checked';
         // adding class completed to mark todo as comleted
-        newTodo.classList.add('todo', 'd-flex', 'completed');
+        newTodo.classList.add('todo', 'd-flex', 'completed', 'op-07');
     }
     else {
         // else mark todo as uncompleted
         radio = 'radio_button_unchecked';
         newTodo.classList.add('todo', 'd-flex');
     }
+    setTimeout(() => {
+        newTodo.classList.remove('op-0');
+        newTodo.classList.add('op-1');
+    }, 1);
 
     // add complete, todo content and delete button to new todo
     // value is todo content 
@@ -127,7 +137,7 @@ function addTodo(e, todo, status) {
     completeBtn.addEventListener('click', completeTodo);
 
     // add event listener for deleting new todo
-    deleteBtn.addEventListener('click', deleteTodo, false);
+    deleteBtn.addEventListener('click', deleteTodo);
 
 }
 
@@ -230,10 +240,13 @@ function deleteTodo(e) {
     deleteTodoFromLocal(todo);
 
     // removing todo from page
-    todo.remove();
-
-    // Updating count
-    getAllTodos();
+    todo.classList.add('op-0');
+    todo.classList.remove('completed');
+    setTimeout(() => {
+        todo.remove();
+        getAllTodos();
+    }, 500);
+    
 }
 
 // Function to delete all completed todos
@@ -245,12 +258,15 @@ function deleteCompletedTodos(e) {
     todos.forEach(todo => {
         if (todo.classList.contains('completed')) {
             deleteTodoFromLocal(todo);
-            todo.remove();
+            todo.classList.add('op-0');
+            todo.classList.remove('completed');
+            setTimeout(() => {
+                todo.remove();
+                getAllTodos();
+            }, 500);
         }
     });
 
-    // Updating the count
-    getAllTodos();
 }
 
 // Function to update count of todos and return all todos

@@ -35,6 +35,14 @@ html {
   background-color: #d2d6dd;
 }
 
+.op-1 {
+  opacity: 1;
+}
+
+.op-0 {
+  opacity: 0;
+}
+
 .todo-container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -114,6 +122,14 @@ html {
   font-size: 0.8rem;
 }
 
+.todo-actions .complete-all:hover, .todo-actions .complete-all:focus {
+  color: dodgerblue;
+}
+
+.todo-actions .clear-completed:hover, .todo-actions .clear-completed:focus {
+  color: crimson;
+}
+
 .todo-list {
   padding: 1rem;
   -webkit-box-orient: vertical;
@@ -126,7 +142,11 @@ html {
 }
 
 .todo-list .completed {
-  opacity: 0.5;
+  opacity: 0.7;
+}
+
+.todo-list .completed .btn.complete {
+  color: dodgerblue;
 }
 
 .todo-list .completed .task {
@@ -147,10 +167,23 @@ html {
   margin-left: 1rem;
 }
 
+.todo-list .todo .complete {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.todo-list .todo .complete:hover, .todo-list .todo .complete:focus {
+  color: dodgerblue;
+}
+
 .todo-list .todo .delete {
   opacity: 0;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+}
+
+.todo-list .todo .delete:hover, .todo-list .todo .delete:focus {
+  color: crimson;
 }
 
 .todo-list .todo:hover .delete,

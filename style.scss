@@ -25,6 +25,14 @@ html {
   background-color: #d2d6dd;
 }
 
+.op-1{
+  opacity: 1;
+}
+.op-0{
+  opacity: 0;
+}
+
+
 .todo-container {
   flex-direction: column;
   background-color: #fff;
@@ -94,6 +102,22 @@ html {
   font-size: 0.8rem;
 }
 
+.todo-actions {
+  .complete-all {
+    &:hover,
+    &:focus {
+      color: dodgerblue;
+    }
+  }
+
+  .clear-completed {
+    &:hover,
+    &:focus {
+      color: crimson;
+    }
+  }
+}
+
 .todo-list {
   padding: 1rem;
   flex-flow: column;
@@ -101,7 +125,11 @@ html {
   transition: all 0.5s ease;
 
   .completed {
-    opacity: 0.5;
+    opacity: 0.7;
+
+    .btn.complete {
+      color: dodgerblue;
+    }
 
     .task {
       text-decoration: line-through;
@@ -118,9 +146,23 @@ html {
       margin-left: 1rem;
     }
 
+    .complete {
+      transition: all 0.5s;
+
+      &:hover,
+      &:focus {
+        color: dodgerblue;
+      }
+    }
+
     .delete {
       opacity: 0;
       transition: all 0.5s ease;
+
+      &:hover,
+      &:focus {
+        color: crimson;
+      }
     }
     &:hover .delete,
     &:focus .delete {
