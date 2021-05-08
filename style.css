@@ -1,3 +1,4 @@
+/* Removing default margin and padding */
 * {
   padding: 0;
   margin: 0;
@@ -5,10 +6,12 @@
           box-sizing: border-box;
 }
 
+/* Setting poppins as font */
 html {
   font-family: "Poppins", sans-serif;
 }
 
+/* Class for flex box */
 .d-flex {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23,18 +26,21 @@ html {
       flex-wrap: wrap;
 }
 
+/* Material Icons style */
 .material-icons-outlined {
   vertical-align: middle;
   position: relative;
   top: -1px;
 }
 
+/* Container class */
 .container {
   min-height: 100vh;
   padding: 2rem;
   background-color: #d2d6dd;
 }
 
+/* Opacity classes */
 .op-1 {
   opacity: 1;
 }
@@ -43,6 +49,7 @@ html {
   opacity: 0;
 }
 
+/* Todo container the white box with shadow */
 .todo-container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -56,6 +63,7 @@ html {
   padding: 10px;
 }
 
+/* Button class */
 .btn {
   outline: none;
   background-color: inherit;
@@ -63,10 +71,12 @@ html {
   cursor: pointer;
 }
 
+/* Border bottom class */
 .b-bt {
   border-bottom: 1px solid #ded8d8;
 }
 
+/* form class */
 .form {
   padding: 1rem;
   margin-bottom: 0.5rem;
@@ -77,6 +87,7 @@ html {
   overflow: hidden;
 }
 
+/* on hovera and focus effect on add button of form */
 .form:hover .btn,
 .form:focus .btn {
   opacity: 1;
@@ -84,6 +95,7 @@ html {
   color: #fff;
 }
 
+/* Form input style */
 .form input {
   outline: none;
   background-color: inherit;
@@ -93,6 +105,7 @@ html {
   padding-left: 2rem;
 }
 
+/* todo icon */
 .form .todo-icon {
   font-size: 1.6rem;
   position: absolute;
@@ -100,6 +113,7 @@ html {
   left: 15px;
 }
 
+/* Add button style */
 .form .btn {
   font-size: 1.3rem;
   opacity: 0;
@@ -111,6 +125,11 @@ html {
   transition: all 0.5s ease;
 }
 
+/* 
+ * Todo actions (clear completed, completea all) 
+ * Filter actions(show all, completed, uncompleted)
+ * container styles
+ */
 .todo-actions,
 .filter-todos {
   padding: 0.5rem;
@@ -122,14 +141,17 @@ html {
   font-size: 0.8rem;
 }
 
+/* complete all button hover and focus effect */
 .todo-actions .complete-all:hover, .todo-actions .complete-all:focus {
   color: dodgerblue;
 }
 
+/* clear completed button hover and focus effect */
 .todo-actions .clear-completed:hover, .todo-actions .clear-completed:focus {
   color: crimson;
 }
 
+/* contains all todos styles */
 .todo-list {
   padding: 1rem;
   -webkit-box-orient: vertical;
@@ -141,18 +163,18 @@ html {
   transition: all 0.5s ease;
 }
 
+/* completed todos styles */
 .todo-list .completed {
   opacity: 0.7;
 }
-
 .todo-list .completed .btn.complete {
   color: dodgerblue;
 }
-
 .todo-list .completed .task {
   text-decoration: line-through;
 }
 
+/* todo styles */
 .todo-list .todo {
   width: 100%;
   -webkit-box-pack: justify;
@@ -162,44 +184,50 @@ html {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-
 .todo-list .todo .task {
   margin-left: 1rem;
 }
 
+/* transiton on complete radio button */
 .todo-list .todo .complete {
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
+/* complete buutton hover and focus effect */
 .todo-list .todo .complete:hover, .todo-list .todo .complete:focus {
   color: dodgerblue;
 }
 
+/* delete buttton of a todo */
 .todo-list .todo .delete {
-  opacity: 0;
+  opacity: 0;all
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
 
+/* delete button hover and focus effect */
 .todo-list .todo .delete:hover, .todo-list .todo .delete:focus {
   color: crimson;
 }
 
+/* show delete button on hover a todo */
 .todo-list .todo:hover .delete,
 .todo-list .todo:focus .delete {
   opacity: 1;
 }
 
+/* totoal todos  */
 .filter-todos #total {
   color: #000;
 }
 
+/* show button (all, completed, uncompleted) */
 .filter-todos .filter-actions .btn {
   margin-left: 0.5rem;
 }
 
+/* class to show selected button */
 .filter-todos .filter-actions .active {
   color: #000;
 }
-/*# sourceMappingURL=style.css.map */
