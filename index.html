@@ -29,7 +29,7 @@
 
             <!-- Form to create Todo -->
             <div class="form">
-                <form class="add-todo-form">
+                <form class class="add-todo-form">
 
                     <!-- Icon -->
                     <span class="material-icons-outlined todo-icon">
@@ -38,10 +38,12 @@
 
                     <!-- input -->
                     <input type="text" autocomplete="off" required placeholder="Type your todo list" id="todo-content">
-                    
+
                     <!-- Add button -->
                     <button type="submit" id="add-todo" class="btn">
-                        Add
+                        <span class="material-icons-outlined">
+                            add_circle_outline
+                        </span>
                     </button>
                 </form>
             </div>
@@ -64,8 +66,8 @@
             <!-- End Todo actions complete all and clear completed -->
 
             <!-- Todo container -->
-            <div class="todo-list d-flex b-bt">
-               
+            <div class="todo-list b-bt">
+
             </div>
             <!-- End Todo container -->
 
@@ -82,10 +84,10 @@
 
                     <!-- show all todos -->
                     <div data-show="all" class="show btn active">All</div>
-                    
+
                     <!-- show Uncompleted todos -->
                     <div data-show="uncompleted" class="show btn">Uncompleted</div>
-                    
+
                     <!-- show completed todos -->
                     <div data-show="completed" class="show btn">Completed</div>
                 </div>
@@ -102,7 +104,7 @@
 
     <!-- javascript file -->
     <script src="./script.js"></script>
-    
+
 </body>
 
 </html>
